@@ -1,18 +1,19 @@
-package ciphers_cezar;
+package ciphers.cezar;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         while(true) {
-            System.out.println("Выберите что вы хотите сделать:\n" +
-                    "1 - зашифровать, \n" +
-                    "2 - расшифровать, \n" +
-                    "3 - выполнить брут форс, \n" +
-                    "4 - синтаксический анализ, \n" +
-                    "5 - что бы выйти из программы \n");
+            System.out.println("""
+                    Выберите что вы хотите сделать:
+                    1 - зашифровать,\s
+                    2 - расшифровать,\s
+                    3 - выполнить брут форс,\s
+                    4 - синтаксический анализ,\s
+                    5 - что бы выйти из программы\s
+                    """);
             String answer = scanner.nextLine();
             switch(answer) {
                 case "1" -> new ChoiceOne().choiceOne();

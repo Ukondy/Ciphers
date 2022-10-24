@@ -1,24 +1,32 @@
-package ciphers_cezar;
+package ciphers.cezar;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
 public class ChoiceFour {
-    public void choiceFour() throws Exception {
-        Map<Character, Integer> map = new HashMap<>();
-        Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
+    private final Map<Character, Integer> map = new HashMap<>();
+
+    public void choiceFour() throws IOException {
+
         System.out.println("Введите путь до зашифрованого файла");
-        String pathDecrypt = "D:\\testJava\\target.txt";
+        String pathDecrypt = scanner.nextLine();
+
         System.out.println("Введите путь до файла для набора статистики файла");
-        String pathStatistic = "D:\\testJava\\source2.txt";
+        String pathStatistic = scanner.nextLine();
+
         System.out.println("Введите путь до местя для сохранения файла");
         String pathEncrypt = "D:\\testJava\\target2.txt";
-        Map<Character, Integer> fillMapStatistic = fillMapValues(map, pathStatistic);
-        Map<Character, Integer> fillMapDecrypt = fillMapValues(map, pathDecrypt);
+
+        Map<Character, Integer> fillMapStatistic = fillMapValues(map, pathStatistic); // один и тот же map используется
+        Map<Character, Integer> fillMapDecrypt = fillMapValues(map, pathDecrypt); // один и тот же map используется
+
         List<Map.Entry<Character, Integer>> list;
         List<Map.Entry<Character, Integer>> list2;
+
         list = sortMap(fillMapStatistic);
         list2 = sortMap(fillMapDecrypt);
 
@@ -32,7 +40,7 @@ public class ChoiceFour {
         System.out.println();
     }
 
-    private Map<Character, Integer> fillMapValues(Map<Character, Integer> map, String path) throws Exception {
+    private Map<Character, Integer> fillMapValues(Map<Character, Integer> map, String path) throws IOException {
         StringBuilder builder = new StringBuilder();
         try (BufferedReader reader = Files.newBufferedReader(Path.of(path))) {
             while (reader.ready()) {
@@ -48,6 +56,7 @@ public class ChoiceFour {
         }
         return map;
     }
+
     private List<Map.Entry<Character, Integer>> sortMap(Map<Character, Integer> map) {
         Set<Map.Entry<Character, Integer>> entries = map.entrySet();
         List<Map.Entry<Character, Integer>> list = new ArrayList<>(entries);
@@ -62,21 +71,3 @@ public class ChoiceFour {
         return list;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
